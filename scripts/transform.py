@@ -1,10 +1,5 @@
 #%%
 import pandas as pd
-from extract import extract_data
-
-
-data = extract_data()
-
 
 def transform_data(data):
     df = pd.DataFrame(data)
