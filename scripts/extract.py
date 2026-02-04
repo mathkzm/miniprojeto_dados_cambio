@@ -1,11 +1,9 @@
 import requests
 from datetime import date
 
-def extract_data(data_execucao = None):
-    if data_execucao is None:
-        data_execucao = date.today().strftime("%m-%d-%Y")
+def extract_data(data_start, data_end):
 
-    url = f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='{data_execucao}'&$top=100&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao"
+    url = f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='{data_start}'&@dataFinalCotacao='{data_end}'&$top=1000000&$format=json"
 
     response = requests.get(url)
 
